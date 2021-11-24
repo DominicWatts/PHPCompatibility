@@ -1,5 +1,5 @@
 
-FROM php:7.4-cli
+FROM php:8.0-cli
 
 MAINTAINER Dominic <dominic@xigen.co.uk>
 
@@ -19,7 +19,7 @@ RUN docker-php-ext-install \
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN composer global require squizlabs/php_codesniffer:^3.4 \
+RUN composer global require squizlabs/php_codesniffer:^3 \
   && composer global require phpcompatibility/php-compatibility \
   && composer global require dealerdirect/phpcodesniffer-composer-installer \
   && mkdir -p /code
