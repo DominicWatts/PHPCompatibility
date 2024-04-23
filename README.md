@@ -6,13 +6,13 @@
 
     docker login
 
-    docker build -t domw/phpcompatibility:latest ./
+    docker build -t domw/phpcompatibility:latest --build-arg="PHP_VER=php:8.1-cli" --build-arg="COMP_VER=2.5.8" --build-arg="EMAIL=dominic@pixie.agency" ./
 
     docker push domw/phpcompatibility:latest
 
-    docker build -t domw/phpcompatibility:7.1-cli ./
+    docker build -t domw/phpcompatibility:8.1-cli --build-arg="PHP_VER=php:8.1-cli" --build-arg="COMP_VER=2.5.8" --build-arg="EMAIL=dominic@pixie.agency" ./
 
-    docker push domw/phpcompatibility:7.1-cli 
+    docker push domw/phpcompatibility:8.1-cli 
 
 ## Test
 
@@ -23,6 +23,10 @@
 ## Usage
     
     docker pull domw/phpcompatibility
+
+    docker run --rm -v $PWD:/code domw/phpcompatibility php -v
+
+    docker run --rm -v $PWD:/code domw/phpcompatibility:8.2-cli php -v
     
     docker run --rm -v $PWD:/code domw/phpcompatibility phpcs --version
     
